@@ -30,7 +30,7 @@ namespace NextGen
         {
             
             // services.AddTransient<IPieRepository, MockPieRepository>();
-            services.AddTransient<IPieRepository, PieRepository>();
+            services.AddTransient<IRepository, MongoRepository>();
 
             services.AddMvc();
         }

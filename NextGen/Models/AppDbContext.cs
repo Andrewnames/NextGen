@@ -13,6 +13,6 @@ namespace NextGen.Models
         }
 
 
-        public DbSet<Pie> Pies { get; set; }
+     
     }
 }

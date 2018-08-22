@@ -5,26 +5,29 @@ using System.Threading.Tasks;
 using NextGen.Models;
 using NextGen.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 
 namespace NextGen.Controllers
 {
     public class HomeController : Controller
     {
-        IPieRepository _pieRepo;
-        public HomeController(IPieRepository pieRepo)
+        IRepository _mongoRepo;
+        public HomeController(IRepository mongoRepo)
         {
-            _pieRepo = pieRepo;
+            _mongoRepo = mongoRepo;
         }
         public IActionResult Index()
         {
 
-            //var pies = _pieRepo.GetAllPies().OrderBy(p => p.Name).ToList();
-            //var homeVm = new HomeViewModel {
+            var injectors = _mongoRepo.GetInjectorRecords();
+            DeviceRecord myObj = MongoDB.Bson.Serialization.BsonSerializer.Deserialize<DeviceRecord>(injectors);
+            var homeVm = new HomeViewModel
+            {
 
-            //    Title = "We",
-            //    Pies = pies
-            //};
-            return View(/*homeVm*/);
+                Title = "Medrad Family",
+                Injectors = myObj.models
+            };
+            return View(homeVm);
         }
     }
 }

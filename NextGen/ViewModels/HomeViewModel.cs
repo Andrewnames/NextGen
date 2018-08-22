@@ -8,7 +8,9 @@ namespace NextGen.ViewModels
 {
     public class HomeViewModel
     {
-        public List<Pie> Pies { get; set; }
+        public Dictionary<string, string> Injectors { get; set; }
         public string Title { get; set; }
+
+
     }
 }

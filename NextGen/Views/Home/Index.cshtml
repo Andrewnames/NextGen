@@ -3,19 +3,13 @@
 <h2>@Model.Title</h2>
 
 
-@foreach (var pie in Model.Pies)
+@foreach (var injectorPic in Model.Injectors)
 {
 
     <div class="col-sm-4 col-lg-4 col-md-4">
         <div class="thumbnail">
-            <img src="@pie.ImageThumbnailUrl" alt="">
-            <div class="caption">
-                <h3 class="pull-right">@pie.Price.ToString("c")</h3>
-                <h3>
-                    @pie.Name
-                </h3>
-                <p>@pie.ShortDescription</p>
-            </div>
+            <h2>@injectorPic.Key.ToString()</h2>
+            <img src="@injectorPic.Value.ToString()" alt="">
         </div>
     </div>
 }
